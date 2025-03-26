@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+<style>
+    .league-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around; /* Eşit boşluk bırak */
+        gap: 15px; /* Butonlar arasında boşluk */
+    }
+
+    .league-button {
+        display: block;
+        width: 150px;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+    }
+
+        .league-button img {
+            width: 300px; /* Sabit genişlik */
+            height: 250px; /* Sabit yükseklik */
+            object-fit: contain; /* Resmi tam göster */
+            border-radius: 5px; /* Köşeleri yuvarlat */
+        }
+
+        .league-button span {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold; /* Kalın yazı */
+            color: #333; /* Yazı rengi */
+            font-size: 14px; /* Yazı boyutu */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+            .league-button span:hover {
+                color: #adff00;
+            }
+</style>
+
+<h1>Futbol Sitesine Hoş Geldiniz!</h1>
+<br />
+<p>Burada 5 büyük ligin puan durumlarını takip edebilirsiniz.</p>
+<br />
+
+
+<div class="league-buttons">
+    <a href="@Url.Action("PremierLeague", "Home")" class="league-button">
+        <img src="~/Uploads/Ligler/ingiltereLigi.png" alt="Premier League" />
+        <span>İngiltere Premier Ligi</span>
+    </a>
+
+</div>
