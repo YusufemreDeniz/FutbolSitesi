@@ -1,0 +1,39 @@
+@model FutbolSitesi.Models.Team
+
+@{
+    ViewBag.Title = "Takım Detayları";
+
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Takim Detaylari</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <img src="@Model.Logo" alt="@Model.Name" class="img-fluid" style="max-width: 200px;">
+                        </div>
+                        <div class="col-md-8">
+                            <h3 class="card-title">@Model.Name</h3>
+                            <p class="card-text"><strong>Ulke:</strong> @Model.Country</p>
+                            <p class="card-text"><strong>Kurulus:</strong> @Model.Founded</p>
+                            <p class="card-text"><strong>Stadyum:</strong> @Model.Venue</p>
+                            <p class="card-text"><strong>Sehir:</strong> @Model.City</p>
+                            <p class="card-text"><strong>Adres:</strong> @Model.Address</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <a href="@Url.Action("PremierLeague", "Home")" class="btn btn-primary">Geri Don</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+} 

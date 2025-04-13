@@ -3,9 +3,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace FutbolSitesi // Namespace ile Global.asax içindeki adın aynı olmalı!
+namespace FutbolSitesi
 {
-    public class Global : HttpApplication
+    public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {

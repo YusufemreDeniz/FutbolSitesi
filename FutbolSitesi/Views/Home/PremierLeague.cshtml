@@ -58,6 +58,19 @@
         text-transform: uppercase;
         vertical-align: top;
     }
+
+    .team-link {
+        color: #007bff;
+        text-decoration: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+        .team-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
 </style>
 
 <div class="container mt-4">
@@ -75,7 +88,6 @@
                 <th>Yenilen Gol</th>
                 <th>Averaj</th>
                 <th>Puan</th>
-                <th>Teknik Direktör</th>
             </tr>
         </thead>
         <tbody>
@@ -83,8 +95,10 @@
             {
                 <tr>
                     <td class="team-name">
-                        <img src="@team.ImageUrl" alt="@team.Name" class="img-thumbnail" style="width:50px;height:50px;" />
-                        @team.Name
+                        <a href="@Url.Action("Details", "Team", new { id = team.TeamId })" class="team-link">
+                            <img src="@team.ImageUrl" alt="@team.Name" class="img-thumbnail" style="width:50px;height:50px;" />
+                            @team.Name
+                        </a>
                     </td>
                     <td>@team.MatchesPlayed</td>
                     <td>@team.Wins</td>
@@ -94,10 +108,19 @@
                     <td>@team.GoalsConceded</td>
                     <td>@team.GoalDifference</td>
                     <td>@team.Points</td>
-                    <td class="coach-name">@team.Coach</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Takım listesini al
+            $.get('@Url.Action("GetTeams", "Team")', function (teams) {
+                console.log(teams); // Konsola yazdır
+            });
+        });
+    </script>
+}

@@ -13,12 +13,12 @@ namespace FutbolSitesi.Services
         {
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Add("x-rapidapi-key", "0d227b63camshccb09c48c177a0dp1cc339jsn62cbe5669032");
-            _httpClient.DefaultRequestHeaders.Add("x-rapidapi-host", "premier-league18.p.rapidapi.com");
+            _httpClient.DefaultRequestHeaders.Add("x-rapidapi-host", "api-football-v1.p.rapidapi.com");
         }
 
         public async Task<JArray> GetPremierLeagueTeams()
         {
-            var requestUrl = "https://premier-league18.p.rapidapi.com/teams";
+            var requestUrl = "https://api-football-v1.p.rapidapi.com/v3/standings?league=39&season=2024";
             HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
 
             if (response.IsSuccessStatusCode)

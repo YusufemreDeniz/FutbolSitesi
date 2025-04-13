@@ -133,12 +133,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PremierLeagueTeamViewModel.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\TeamDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PremierLeagueService.cs" />
   </ItemGroup>
@@ -148,6 +150,7 @@
     <Content Include="Views\Shared\SiteLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\PremierLeague.cshtml" />
+    <Content Include="Views\Team\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
