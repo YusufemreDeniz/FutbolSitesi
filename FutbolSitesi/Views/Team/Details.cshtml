@@ -5,6 +5,26 @@
 
 }
 
+<style>
+    .team-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .squad-btn {
+        background-color: #28a745;
+        border-color: #28a745;
+        transition: all 0.3s ease;
+    }
+
+    .squad-btn:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+        transform: translateY(-2px);
+    }
+</style>
+
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
@@ -27,8 +47,9 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-3">
-                <a href="@Url.Action("PremierLeague", "Home")" class="btn btn-primary">Geri Don</a>
+            <div class="team-actions">
+                <a href="@Url.Action("Squad", "Team", new { id = Model.Id })" class="btn btn-primary squad-btn">Takim Kadrosu</a>
+                @Html.ActionLink("Geri Don", "Index", "Home", null, new { @class = "btn btn-secondary" })
             </div>
         </div>
     </div>

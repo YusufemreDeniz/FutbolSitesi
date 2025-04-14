@@ -151,6 +151,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\PremierLeague.cshtml" />
     <Content Include="Views\Team\Details.cshtml" />
+    <Content Include="Views\Team\Squad.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,82 @@
+@model FutbolSitesi.Models.Team
+
+@{
+    ViewBag.Title = "Takim Kadrosu";
+}
+
+<div class="container mt-4">
+    <h2>@Model.Name - Takim Kadrosu</h2>
+    
+    <div class="team-info mb-4">
+        <img src="@Model.Logo" alt="@Model.Name" class="team-logo" style="max-width: 100px;" />
+    </div>
+
+    <div class="squad-container">
+        <div class="player-list">
+            @foreach (var player in Model.Players)
+            {
+                <div class="player-card">
+                    <div class="player-info">
+                        <span class="player-name">@player.Name</span>
+                        <span class="player-number">@player.Number</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="team-actions mt-4">
+        @Html.ActionLink("Geri Don", "Details", new { id = Model.Id }, new { @class = "btn btn-secondary" })
+    </div>
+</div>
+
+<style>
+    .squad-container {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .player-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .player-card {
+        background-color: white;
+        border-radius: 5px;
+        padding: 10px 15px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+    }
+
+    .player-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .player-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .player-name {
+        font-weight: 500;
+    }
+
+    .player-number {
+        background-color: #007bff;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.9em;
+    }
+
+    .team-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+</style> 

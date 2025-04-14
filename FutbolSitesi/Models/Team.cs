@@ -16,5 +16,6 @@ namespace FutbolSitesi.Models
         public string City { get; set; }
         public string Address { get; set; }
         public string Website { get; set; }
+        public List<Player> Players { get; set; }
     }
 }
