@@ -1,56 +1,89 @@
-﻿@{
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/SiteLayout.cshtml";
 }
 <style>
+    body {
+        background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #fff;
+    }
+    h1 {
+        text-align: center;
+        font-size: 2.8rem;
+        color: #ffd700;
+        text-shadow: 2px 2px 8px #222, 0 0 10px #2ec4b6;
+        margin-top: 20px;
+        letter-spacing: 2px;
+    }
+    p {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #e0e1dd;
+    }
     .league-buttons {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around; /* Eşit boşluk bırak */
-        gap: 15px; /* Butonlar arasında boşluk */
+        justify-content: center;
+        gap: 32px;
+        margin-top: 40px;
     }
-
     .league-button {
         display: block;
-        width: 150px;
+        width: 240px;
+        background: #22223b;
+        border-radius: 18px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.22), 0 1.5px 4px rgba(44,62,80,0.15);
         text-align: center;
         text-decoration: none;
-        color: black;
+        color: #fff;
+        transition: transform 0.2s, box-shadow 0.2s;
+        padding: 18px 0 12px 0;
+        border: 2px solid #ffd700;
+        position: relative;
     }
-
-        .league-button img {
-            width: 300px; /* Sabit genişlik */
-            height: 250px; /* Sabit yükseklik */
-            object-fit: contain; /* Resmi tam göster */
-            border-radius: 5px; /* Köşeleri yuvarlat */
-        }
-
-        .league-button span {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold; /* Kalın yazı */
-            color: #333; /* Yazı rengi */
-            font-size: 14px; /* Yazı boyutu */
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-            .league-button span:hover {
-                color: #adff00;
-            }
+    .league-button:hover {
+        transform: scale(1.05) translateY(-4px);
+        box-shadow: 0 8px 24px rgba(44,62,80,0.25), 0 4px 12px #ffd700;
+        border-color: #2ec4b6;
+    }
+    .league-button img {
+        width: 180px;
+        height: 140px;
+        object-fit: contain;
+        border-radius: 12px;
+        background: #fff;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .league-button span {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+        color: #ffd700;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        transition: color 0.3s;
+        text-shadow: 0 1px 4px #222;
+    }
+    .league-button span:hover {
+        color: #2ec4b6;
+        text-shadow: 0 2px 8px #ffd700;
+    }
 </style>
 
-<h1>Futbol Sitesine Hoş Geldiniz!</h1>
+<h1>Futbol Sitesine Hos Geldiniz!</h1>
 <br />
-<p>Burada 5 büyük ligin puan durumlarını takip edebilirsiniz.</p>
+<p>Burada Premier ligini takip edebilirsiniz.</p>
 <br />
 
 
 <div class="league-buttons">
     <a href="@Url.Action("PremierLeague", "Home")" class="league-button">
         <img src="~/Uploads/Ligler/ingiltereLigi.png" alt="Premier League" />
-        <span>İngiltere Premier Ligi</span>
+        <span>Ingiltere Premier Ligi</span>
     </a>
 
 </div>

@@ -5,10 +5,10 @@
 }
 
 <div class="container mt-4">
-    <h2>@Model.Name - Takim Kadrosu</h2>
-    
-    <div class="team-info mb-4">
-        <img src="@Model.Logo" alt="@Model.Name" class="team-logo" style="max-width: 100px;" />
+    <div class="text-center mb-4">
+        <h1 class="team-main-title">@Model.Name</h1>
+        <img src="@Model.Logo" alt="@Model.Name" class="team-logo-main" style="max-width: 140px; margin: 18px auto 8px auto; display: block;" />
+        <h2 class="squad-title">Takim Kadrosu</h2>
     </div>
 
     <div class="squad-container">
@@ -31,52 +31,111 @@
 </div>
 
 <style>
-    .squad-container {
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    body {
+        background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+        color: #fff;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        min-height: 100vh;
     }
-
+    .container {
+        background: rgba(34,34,59,0.97);
+        border-radius: 16px;
+        box-shadow: 0 6px 32px rgba(0,0,0,0.28);
+        padding: 32px 32px 24px 32px;
+    }
+    h2 {
+        color: #ffd700;
+        text-align: center;
+        font-size: 2rem;
+        letter-spacing: 2px;
+        text-shadow: 1px 1px 8px #222;
+        margin-bottom: 24px;
+    }
+    .team-logo-main {
+        border-radius: 50%;
+        border: 4px solid #ffd700;
+        box-shadow: 0 4px 16px #ffd70055;
+        background: #fff;
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+    .team-main-title {
+        color: #ffd700;
+        font-size: 2.3rem;
+        letter-spacing: 2px;
+        font-weight: bold;
+        text-shadow: 1px 1px 8px #222, 0 0 8px #2ec4b6;
+        margin-bottom: 0.5rem;
+    }
+    .squad-title {
+        color: #2ec4b6;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 24px;
+        margin-top: 0;
+    }
+    .squad-container {
+        background: rgba(27,38,59,0.98);
+        border-radius: 14px;
+        padding: 28px 24px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
     .player-list {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 16px;
     }
-
     .player-card {
-        background-color: white;
-        border-radius: 5px;
-        padding: 10px 15px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        transition: transform 0.2s;
+        background: #22223b;
+        border-radius: 10px;
+        padding: 16px 22px;
+        box-shadow: 0 2px 8px #ffd70033;
+        transition: transform 0.22s, box-shadow 0.22s;
+        color: #ffd700;
+        font-size: 1.08rem;
     }
-
     .player-card:hover {
-        transform: translateY(-2px);
+        transform: scale(1.04) translateY(-2px);
+        box-shadow: 0 4px 16px #2ec4b655;
     }
-
     .player-info {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-
     .player-name {
-        font-weight: 500;
+        font-weight: bold;
+        color: #ffd700;
+        letter-spacing: 1px;
     }
-
     .player-number {
-        background-color: #007bff;
-        color: white;
-        padding: 2px 8px;
-        border-radius: 12px;
-        font-size: 0.9em;
+        background-color: #2ec4b6;
+        color: #fff;
+        padding: 4px 14px;
+        border-radius: 14px;
+        font-size: 1em;
+        font-weight: bold;
+        box-shadow: 0 1px 4px #2ec4b655;
+        letter-spacing: 1px;
     }
-
     .team-actions {
         display: flex;
-        gap: 10px;
-        margin-top: 20px;
+        gap: 12px;
+        margin-top: 24px;
+        justify-content: center;
+    }
+    .btn-secondary {
+        background: #22223b;
+        color: #ffd700;
+        border: 1px solid #ffd700;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: all 0.22s;
+    }
+    .btn-secondary:hover {
+        background: #ffd700;
+        color: #22223b;
+        box-shadow: 0 2px 8px #ffd70055;
     }
 </style> 

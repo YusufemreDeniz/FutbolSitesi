@@ -119,59 +119,96 @@ namespace FutbolSitesi.Controllers
             }
         }
 
-        public async Task<ActionResult> Squad(int id)
+public async Task<ActionResult> Squad(int id)
+{
+    try
+    {
+        // 1. Oyuncuları çek
+        using (var client = new HttpClient())
         {
-            try
+            // Oyuncular için istek
+            var playerRequest = new HttpRequestMessage
             {
-                using (var client = new HttpClient())
-                {
-                    var request = new HttpRequestMessage
-                    {
-                        Method = HttpMethod.Get,
-                        RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/players/2024/{id}"),
+                Method = HttpMethod.Get,
+                RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/players?team={id}&season=2024"),
                         Headers =
                         {
                             { "x-rapidapi-key", "0d227b63camshccb09c48c177a0dp1cc339jsn62cbe5669032" },
                             { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
                         },
-                    };
+            };
 
-                    using (var response = await client.SendAsync(request))
+            var playerResponse = await client.SendAsync(playerRequest);
+            playerResponse.EnsureSuccessStatusCode();
+            var playerBody = await playerResponse.Content.ReadAsStringAsync();
+            var playerJson = JObject.Parse(playerBody);
+            var playersData = playerJson["response"];
+
+            // 2. Takım adı ve logosu için standings endpointine istek
+            var teamRequest = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/standings?league=39&season=2024"),
+                        Headers =
+                        {
+                            { "x-rapidapi-key", "0d227b63camshccb09c48c177a0dp1cc339jsn62cbe5669032" },
+                            { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
+                        },
+            };
+
+            var teamResponse = await client.SendAsync(teamRequest);
+            teamResponse.EnsureSuccessStatusCode();
+            var teamBody = await teamResponse.Content.ReadAsStringAsync();
+            var teamJson = JObject.Parse(teamBody);
+            var teams = teamJson["response"][0]["league"]["standings"][0];
+
+            string teamName = "";
+            string teamLogo = "";
+
+            foreach (var t in teams)
+            {
+                var teamIdToken = t["team"]?["id"];
+                int teamId = 0;
+                if (teamIdToken != null && int.TryParse(teamIdToken.ToString(), out teamId))
+                {
+                    if (teamId == id)
                     {
-                        response.EnsureSuccessStatusCode();
-                        var body = await response.Content.ReadAsStringAsync();
-                        
-                        // JSON'ı işle
-                        var jsonData = JObject.Parse(body);
-                        var apiData = jsonData["api"];
-                        var playersData = apiData["players"];
-
-                        var team = new Team
-                        {
-                            Id = id,
-                            Name = "Takım Adı", // API'den gelen yanıtta takım adı yok
-                            Logo = "https://via.placeholder.com/100", // API'den gelen yanıtta logo yok
-                            Players = new List<Player>()
-                        };
-
-                        foreach (var playerData in playersData)
-                        {
-                            var player = new Player
-                            {
-                                Name = (string)playerData["player"],
-                                Number = int.Parse((string)playerData["number"])
-                            };
-                            team.Players.Add(player);
-                        }
-
-                        return View(team);
+                        teamName = (string)t["team"]["name"];
+                        teamLogo = (string)t["team"]["logo"];
+                        break;
                     }
                 }
             }
-            catch (Exception)
+
+            var team = new Team
             {
-                return RedirectToAction("Details", new { id = id });
+                Id = id,
+                Name = teamName,
+                Logo = teamLogo,
+                Players = new List<Player>()
+            };
+
+            foreach (var playerData in playersData)
+            {
+                string numberStr = playerData["statistics"]?[0]?["games"]?["number"]?.ToString();
+                int number = 0;
+                int.TryParse(numberStr, out number);
+
+                var player = new Player
+                {
+                    Name = (string)playerData["player"]["name"],
+                    Number = number
+                };
+                team.Players.Add(player);
             }
+
+            return View(team);
         }
+    }
+    catch (Exception)
+    {
+        return RedirectToAction("Details", new { id = id });
+    }
+}
     }
 } 

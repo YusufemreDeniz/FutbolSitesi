@@ -6,22 +6,84 @@
 }
 
 <style>
+    body {
+        background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+        color: #fff;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        min-height: 100vh;
+    }
+    .container {
+        background: rgba(34,34,59,0.97);
+        border-radius: 16px;
+        box-shadow: 0 6px 32px rgba(0,0,0,0.28);
+        padding: 32px 32px 24px 32px;
+    }
+    h2 {
+        color: #ffd700;
+        text-align: center;
+        font-size: 2rem;
+        letter-spacing: 2px;
+        text-shadow: 1px 1px 8px #222;
+        margin-bottom: 24px;
+    }
+    .card {
+        background: #22223b;
+        border-radius: 18px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+        margin-bottom: 20px;
+    }
+    .card-title {
+        color: #ffd700;
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
+    }
+    .card-text strong {
+        color: #2ec4b6;
+    }
+    .img-fluid {
+        border-radius: 50%;
+        border: 3px solid #ffd700;
+        box-shadow: 0 2px 8px #22223b66;
+        background: #fff;
+        margin-bottom: 10px;
+    }
     .team-actions {
         display: flex;
-        gap: 10px;
+        gap: 12px;
         margin-top: 20px;
+        justify-content: center;
     }
-
     .squad-btn {
-        background-color: #28a745;
-        border-color: #28a745;
-        transition: all 0.3s ease;
+        background-color: #ffd700;
+        color: #22223b;
+        border: none;
+        font-weight: bold;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px #ffd70055;
+        padding: 10px 24px;
+        font-size: 1.08rem;
+        transition: all 0.25s;
+        letter-spacing: 1px;
     }
-
     .squad-btn:hover {
-        background-color: #218838;
-        border-color: #1e7e34;
-        transform: translateY(-2px);
+        background-color: #2ec4b6;
+        color: #fff;
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 4px 16px #2ec4b655;
+    }
+    .btn-secondary {
+        background: #22223b;
+        color: #ffd700;
+        border: 1px solid #ffd700;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: all 0.22s;
+    }
+    .btn-secondary:hover {
+        background: #ffd700;
+        color: #22223b;
+        box-shadow: 0 2px 8px #ffd70055;
     }
 </style>
 
