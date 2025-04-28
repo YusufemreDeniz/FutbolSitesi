@@ -1,14 +1,16 @@
 ⚽ FutbolSitesi
-FutbolSitesi, futbolseverler için geliştirilen dinamik ve kullanıcı dostu bir web platformudur. ASP.NET MVC ve modern web teknolojileri kullanılarak geliştirilmiştir.
+FutbolSitesi, futbol tutkunlarına yönelik olarak ASP.NET MVC yapısıyla geliştirilmiş dinamik bir web uygulamasıdır. İngiltere Premier Ligi başta olmak üzere çeşitli liglerin güncel puan durumları ve bilgileri RapidAPI üzerinden çekilerek kullanıcıya sunulmaktadır.
 
 🚀 Özellikler
-🌍 5 büyük Avrupa ligine özel sayfalar
+ASP.NET MVC mimarisi kullanılarak geliştirilmiştir.
 
-📈 RapidAPI üzerinden Premier Lig puan durumu verilerini canlı çekme
+Responsive ve kullanıcı dostu bir tasarım.
 
-📱 Mobile (Responsive) uyumlu tasarım
+RapidAPI üzerinden Premier Lig puan durumu verilerini dinamik çekme.
 
-🛠️ Modüler ve geliştirilebilir proje altyapısı
+Modüler yapısıyla diğer büyük ligler (La Liga, Serie A, Bundesliga, Ligue 1) kolayca entegre edilebilir.
+
+Admin paneli ile içerik yönetimi için altyapı hazırlanmıştır.
 
 🛠️ Kullanılan Teknolojiler
 ASP.NET MVC 5
@@ -17,40 +19,35 @@ C#
 
 HTML5 & CSS3
 
-JavaScript & TypeScript
+JavaScript
 
-RapidAPI (Futbol API entegrasyonu)
+RapidAPI (Futbol API)
 
-📦 Proje Yapısı
-bash
-Kopyala
-Düzenle
-FutbolSitesi/
-├── FutbolSitesi/         # Ana ASP.NET MVC uygulaması
-├── Mobile/               # Mobil versiyon için geliştirmeler
-├── packages/             # NuGet bağımlılıkları
-├── FutbolSitesi.sln      # Çözüm dosyası
-└── .gitignore            # Git ayarları
-📋 Kurulum ve Çalıştırma
+Visual Studio 2022
+
+📸 Görseller (Opsiyonel)
+Buraya proje ekran görüntüleri ekleyebilirsin. (Öneririm! Kullanıcılar proje hakkında hemen fikir sahibi olur.)
+
+📦 Kurulum
 Bu repoyu klonlayın:
 
 bash
 Kopyala
 Düzenle
 git clone https://github.com/YusufemreDeniz/FutbolSitesi.git
-Visual Studio 2022 ile projeyi açın.
+Visual Studio 2022 ile açın.
 
-Gerekli NuGet paketlerini yükleyin (Tools > NuGet Package Manager > Restore Packages).
+Gerekli NuGet paketlerini yükleyin.
 
-Web.config dosyasına kendi API anahtarınızı ekleyin.
+RapidAPI'den bir API key alın ve ilgili konfigürasyon dosyalarına ekleyin.
 
-Projeyi çalıştırın ve keyfini çıkarın!
+Projeyi çalıştırın ve futbol keyfini yaşayın!
 
-🧩 Geliştirme Planları
- Tüm büyük ligler için ayrı puan durumu ekranları
+💡 Yol Haritası
+ Diğer büyük liglerin eklenmesi (La Liga, Bundesliga vb.)
 
- Maç fikstürleri ve detaylı istatistik ekranı
+ Nostaljik maçlar bölümü
 
- Yapay zeka destekli maç tahmin sistemi
+ Yapay zeka destekli sohbet robotu entegrasyonu
 
- Kullanıcı giriş/üyelik sistemi
+ Mobil uyumluluğun artırılması
