@@ -1,0 +1,144 @@
+@model List<FutbolSitesi.Models.PremierLeagueTeamViewModel>
+
+@{
+    ViewData["Title"] = "Premier Lig";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+        color: #fff;
+        min-height: 100vh;
+    }
+    .container {
+        margin-top: 32px;
+        background: rgba(34,34,59,0.95);
+        border-radius: 18px;
+        box-shadow: 0 6px 32px rgba(0,0,0,0.28);
+        padding: 32px 32px 24px 32px;
+    }
+    h2 {
+        color: #ffd700;
+        margin-bottom: 28px;
+        text-align: center;
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+        text-shadow: 1px 1px 8px #222, 0 0 8px #2ec4b6;
+    }
+    .table {
+        width: 100%;
+        margin-bottom: 1.5rem;
+        color: #fff;
+        border-collapse: collapse;
+        background: rgba(27,38,59,0.98);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .table th, .table td {
+        padding: 1.1rem 1rem;
+        vertical-align: middle;
+        border-top: 1px solid #ffd70044;
+        font-size: 1.08rem;
+    }
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #ffd700;
+        background-color: #22223b;
+        color: #ffd700;
+        font-size: 1.13rem;
+        letter-spacing: 1px;
+        text-shadow: 0 1px 4px #222;
+    }
+    .table tbody tr {
+        transition: background 0.18s;
+    }
+    .table tbody tr:hover {
+        background-color: #2ec4b644;
+    }
+    .img-thumbnail {
+        border-radius: 50%;
+        margin-right: 10px;
+        border: 2px solid #ffd700;
+        box-shadow: 0 2px 8px #22223b66;
+        background: #fff;
+    }
+    .coach-name {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #2ec4b6;
+    }
+    .team-name {
+        text-transform: uppercase;
+        vertical-align: top;
+        font-weight: bold;
+        color: #ffd700;
+        letter-spacing: 1px;
+    }
+    .team-link {
+        color: #007bff;
+        text-decoration: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+        .team-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+</style>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Premier Lig</h2>
+
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Takim</th>
+                <th>Oynanan Mac</th>
+                <th>Galibiyet</th>
+                <th>Beraberlik</th>
+                <th>Maglubiyet</th>
+                <th>Atilan Gol</th>
+                <th>Yenilen Gol</th>
+                <th>Averaj</th>
+                <th>Puan</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var team in Model)
+            {
+                <tr>
+                    <td class="team-name">
+                        <a href="@Url.Action("Details", "Team", new { id = team.TeamId })" class="team-link">
+                            <img src="@team.ImageUrl" alt="@team.Name" class="img-thumbnail" style="width:50px;height:50px;" />
+                            @team.Name
+                        </a>
+                    </td>
+                    <td>@team.MatchesPlayed</td>
+                    <td>@team.Wins</td>
+                    <td>@team.Draws</td>
+                    <td>@team.Losses</td>
+                    <td>@team.GoalsScored</td>
+                    <td>@team.GoalsConceded</td>
+                    <td>@team.GoalDifference</td>
+                    <td>@team.Points</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Takım listesini al
+            $.get('@Url.Action("GetTeams", "Team")', function (teams) {
+                console.log(teams); // Konsola yazdır
+            });
+        });
+    </script>
+}

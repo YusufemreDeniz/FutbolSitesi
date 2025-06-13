@@ -1,35 +1,38 @@
-# Welcome to your Expo app 👋
+# ⚽ FutbolSitesi
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Repository files navigation
+Bu depo, FutbolSitesi projesinin hem web hem de mobil uygulama kodlarını içerir.
 
 ---
 
-## 📱 Mobile/FutbolSitesiMobile
+## 🌐 Web (ASP.NET MVC)
+
+FutbolSitesi, futbol tutkunlarına yönelik olarak ASP.NET MVC yapısıyla geliştirilmiş dinamik bir web uygulamasıdır. İngiltere Premier Ligi başta olmak üzere çeşitli liglerin güncel puan durumları ve bilgileri RapidAPI üzerinden çekilerek kullanıcıya sunulmaktadır.
+
+### 🚀 Özellikler
+- ASP.NET MVC mimarisi kullanılarak geliştirilmiştir.
+- Responsive ve kullanıcı dostu bir tasarım.
+- RapidAPI üzerinden Premier Lig puan durumu verilerini dinamik çekme.
+- Modüler yapısıyla diğer büyük ligler (La Liga, Serie A, Bundesliga, Ligue 1) kolayca entegre edilebilir.
+- Admin paneli ile içerik yönetimi için altyapı hazırlanmıştır.
+
+### 🛠️ Kullanılan Teknolojiler
+- ASP.NET MVC 5
+- C#
+- HTML5 & CSS3
+- JavaScript
+- RapidAPI (Futbol API)
+- Visual Studio 2022
+
+### 📦 Kurulum
+1. Bu repoyu klonlayın: `git clone https://github.com/YusufemreDeniz/FutbolSitesi.git`
+2. Projenin web kısmını Visual Studio 2022 ile açın.
+3. Gerekli NuGet paketlerini yükleyin.
+4. RapidAPI'den bir API key alın ve ilgili konfigürasyon dosyalarına ekleyin.
+5. Projeyi çalıştırın ve futbol keyfini yaşayın!
+
+---
+
+## 📱 Mobile (React Native & Expo)
 
 FutbolSitesi projesinin mobil uygulama kısmıdır. React Native & Expo ile geliştirilmiştir. Kullanıcılar Premier Lig ve diğer liglere ait takımların kadrolarını, oyuncu detaylarını ve takım bilgilerini mobil cihazlarında kolayca görüntüleyebilir.
 
@@ -50,36 +53,8 @@ FutbolSitesi projesinin mobil uygulama kısmıdır. React Native & Expo ile geli
 ```bash
 cd Mobile/FutbolSitesiMobile
 npm install
-npm start
+npx expo start
 ```
-
 - Uygulamayı Expo Go ile telefonunda veya bir emülatörde çalıştırabilirsin.
 - API anahtarını ilgili dosyalara eklemeyi unutma!
 
-### 👨‍💻 Katkı ve Geliştirme
-- Yeni özellik eklemek veya hata bildirmek için pull request gönderebilirsin.
-- Kod yapısı ve katkı rehberi için lütfen README dosyasını incele.
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
