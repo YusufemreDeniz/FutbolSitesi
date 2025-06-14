@@ -50,7 +50,6 @@ export default function PlayerDetailsScreen() {
   if (!playerData) return null;
 
   const { player, statistics } = playerData;
-  // Süper Lig istatistiğini bul, yoksa ilkini kullan
   let stats: any = {};
   let team: any = {};
   let league: any = {};
@@ -64,11 +63,10 @@ export default function PlayerDetailsScreen() {
   let dribbles: any = {};
 
   if (statistics && Array.isArray(statistics) && statistics.length > 0) {
-    // Süper Lig id:203 veya adı "Süper Lig"
-    const superLigStat = statistics.find(
-      (s: any) => (s.league && (s.league.id === 203 || s.league.name === 'Süper Lig'))
+    const serieAStat = statistics.find(
+      (s: any) => (s.league && (s.league.id === 135 || s.league.name === 'Serie A'))
     );
-    stats = superLigStat || statistics[0];
+    stats = serieAStat || statistics[0];
     team = stats.team || {};
     league = stats.league || {};
     games = stats.games || {};
@@ -88,7 +86,6 @@ export default function PlayerDetailsScreen() {
       start={{ x: 0.2, y: 0 }}
       end={{ x: 0.8, y: 1 }}
     >
-      {/* Soft büyük logo arka plan için */}
       {player && player.team && player.team.logo && (
         <Image
           source={{ uri: player.team.logo }}
@@ -160,7 +157,6 @@ export default function PlayerDetailsScreen() {
             shadowRadius: 8,
             elevation: 5,
           }}>
-            {/* Header */}
             <LinearGradient
               colors={['#b6c6e6', '#e0ecff']}
               start={{ x: 0, y: 0 }}
@@ -170,7 +166,6 @@ export default function PlayerDetailsScreen() {
               <Text style={{ flex: 1, fontWeight: 'bold', padding: 12, borderRightWidth: 1, borderRightColor: '#e0e0e0', textAlign: 'left', color: '#232946', fontSize: 16 }}>İstatistik</Text>
               <Text style={{ flex: 1, fontWeight: 'bold', padding: 12, textAlign: 'right', color: '#232946', fontSize: 16 }}>Değer</Text>
             </LinearGradient>
-            {/* Rows */}
             {[
               { label: 'Maç', value: games?.appearences ?? '-' },
               { label: 'İlk 11', value: games?.lineups ?? '-' },
@@ -201,194 +196,103 @@ export default function PlayerDetailsScreen() {
           </View>
         </>
       ) : null}
-    </ScrollView>
-  </LinearGradient>
+      </ScrollView>
+    </LinearGradient>
   );
 }
 
 const viewStyles = StyleSheet.create({
   container: {
-    padding: 18,
-    alignItems: 'center',
-    paddingBottom: 40,
-  },
-});
-
-const statsTableStyles = StyleSheet.create({
-  statsSectionTitleBox: {
-    borderRadius: 12,
-    marginBottom: 10,
-    alignSelf: 'center',
-    paddingHorizontal: 22,
-    paddingVertical: 7,
-    marginTop: 24,
-    shadowColor: '#b6c6e6',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.13,
-    shadowRadius: 7,
-    elevation: 1,
-  },
-  statsSectionTitle: {
-    color: '#232946',
-    fontWeight: 'bold',
-    fontSize: 20,
-    letterSpacing: 0.7,
-    textAlign: 'center',
-  },
-  backButton: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#f2f2f2',
-    paddingVertical: 7,
-    paddingHorizontal: 15,
-    borderRadius: 22,
-    marginBottom: 14,
-    marginTop: 6,
-    marginLeft: 2,
-    elevation: 2,
-    shadowColor: '#222',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.08,
-    shadowRadius: 2,
-  },
-  backButtonText: {
-    color: '#22223b',
-    fontWeight: 'bold',
-    fontSize: 18,
-    letterSpacing: 1,
-  },
-  statsTableBox: {
-    backgroundColor: '#f9fafc',
-    borderRadius: 16,
-    padding: 0,
-    marginTop: 10,
-    marginBottom: 18,
-    borderWidth: 1.2,
-    borderColor: '#e0ecff',
-    shadowColor: '#b6c6e6',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.10,
-    shadowRadius: 7,
-    elevation: 1,
-    overflow: 'hidden',
-  },
-  statsTableHeader: {
-    flexDirection: 'row',
-    backgroundColor: '#e0ecff',
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-    paddingVertical: 9,
-    paddingHorizontal: 14,
-    borderBottomWidth: 1,
-    borderBottomColor: '#dbeafe',
-  },
-  statsTableHeaderText: {
-    flex: 1,
-    color: '#232946',
-    fontWeight: 'bold',
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  statsTableRow: {
-    flexDirection: 'row',
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-  },
-  statsTableRowEven: {
-    backgroundColor: '#f9fafc',
-  },
-  statsTableRowOdd: {
-    backgroundColor: '#e7effc',
-  },
-  statsTableCellLabel: {
-    flex: 1,
-    color: '#22223b',
-    fontSize: 15,
-    fontWeight: '500',
-    textAlign: 'left',
-  },
-  statsTableCellValue: {
-    flex: 1,
-    color: '#232946',
-    fontSize: 15,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    padding: 20,
   },
 });
 
 const profileCardStyles = StyleSheet.create({
   profileCard: {
-    backgroundColor: '#f4f8fc',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: 20,
-    padding: 22,
-    marginBottom: 28,
-    marginTop: 2,
-    shadowColor: '#b6c6e6',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.12,
-    shadowRadius: 10,
-    elevation: 2,
+    padding: 20,
     alignItems: 'center',
+    shadowColor: '#6a85a6',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 8,
+    marginTop: 24,
+    marginBottom: 16,
     width: '100%',
+    maxWidth: 420,
+    alignSelf: 'center',
   },
   photoContainer: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    backgroundColor: '#e0ecff',
+    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 5,
   },
   profilePhoto: {
     width: 110,
     height: 110,
-    borderRadius: 60,
-    backgroundColor: '#e0ecff',
-    borderWidth: 2,
-    borderColor: '#e0ecff',
-    marginBottom: 6,
+    borderRadius: 55,
   },
   playerName: {
-    fontSize: 24,
-    color: '#232946',
+    fontSize: 26,
     fontWeight: 'bold',
-    marginBottom: 10,
-    letterSpacing: 0.7,
-    textAlign: 'center',
+    color: '#232946',
+    marginBottom: 16,
   },
   infoTableBox: {
-    backgroundColor: '#f8fafc',
-    borderRadius: 14,
-    marginTop: 2,
-    marginBottom: 2,
     width: '100%',
+    borderRadius: 12,
     overflow: 'hidden',
-    borderWidth: 1.2,
-    borderColor: '#e0ecff',
-    shadowColor: '#b6c6e6',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.09,
-    shadowRadius: 6,
-    elevation: 1,
+    borderWidth: 1,
+    borderColor: '#d1e0f0',
   },
   infoTableRow: {
     flexDirection: 'row',
-    paddingVertical: 7,
-    paddingHorizontal: 14,
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
   },
   infoTableRowEven: {
-    backgroundColor: '#f9fafc',
+    backgroundColor: '#f7faff',
   },
   infoTableRowOdd: {
-    backgroundColor: '#e7effc',
+    backgroundColor: '#ffffff',
   },
   infoTableCellLabel: {
-    flex: 1,
-    color: '#22223b',
-    fontSize: 15,
+    fontSize: 16,
+    color: '#5c6a7e',
     fontWeight: '500',
-    textAlign: 'left',
   },
   infoTableCellValue: {
-    flex: 1,
+    fontSize: 16,
     color: '#232946',
-    fontSize: 15,
+    fontWeight: '600',
+  },
+});
+
+const statsTableStyles = StyleSheet.create({
+  backButton: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#e0ecff',
+    paddingVertical: 6,
+    paddingHorizontal: 18,
+    borderRadius: 22,
+    marginBottom: 16,
+    marginTop: 10,
+  },
+  backButtonText: {
+    color: '#232946',
     fontWeight: 'bold',
-    textAlign: 'center',
+    fontSize: 16,
   },
 });

@@ -64,6 +64,14 @@ export default function HomeScreen() {
       />
       <Text style={styles.leagueText}>Serie A</Text>
     </TouchableOpacity>
+    <TouchableOpacity style={styles.leagueButton} onPress={() => router.push('/(tabs)/SampiyonlarLigi/champions-league')} activeOpacity={0.1}>
+    <Image
+        source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5OJK0PVHuk_wT-25Qa3P1B4FWLpBnr6zH4Q&s' }}
+        style={styles.leagueImage}
+        resizeMode="contain"
+      />
+      <Text style={styles.leagueText}>Şampiyonlar Ligi</Text>
+    </TouchableOpacity>
 </View>
       </ScrollView>
     </LinearGradient>

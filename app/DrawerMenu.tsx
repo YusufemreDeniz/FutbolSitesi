@@ -39,6 +39,20 @@ const mainMenu = [
       { label: 'Oyuncu Profili', route: '/(tabs)/TurkiyeLig/player-details' },
     ]
   },
+  { label: 'İtalya Ligi', route: '/(tabs)/ItalyaLig/italy-league',
+    children: [
+      { label: 'Puan Durumu', route: '/(tabs)/ItalyaLig/italy-league' },
+      { label: 'Takım Detayları', route: '/(tabs)/ItalyaLig/team-details' },
+      { label: 'Kadro', route: '/(tabs)/ItalyaLig/team-squad' },
+      { label: 'Oyuncu Profili', route: '/(tabs)/ItalyaLig/player-details' },
+    ]
+  },
+  { label: 'Şampiyonlar Ligi', route: '/(tabs)/SampiyonlarLigi/champions-league',
+    children: [
+      { label: 'Puan Durumu', route: '/(tabs)/SampiyonlarLigi/champions-league' },
+      { label: 'Fikstürler', route: '/(tabs)/SampiyonlarLigi/group-fixtures' },
+    ]
+  },
 ];
 
 export default function DrawerMenu({ onClose }: { onClose?: () => void }) {
@@ -47,6 +61,8 @@ export default function DrawerMenu({ onClose }: { onClose?: () => void }) {
   const [expandedFransa, setExpandedFransa] = useState(false);
   const [expandedAlmanya, setExpandedAlmanya] = useState(false);
   const [expandedTurkiye, setExpandedTurkiye] = useState(false);
+  const [expandedItalya, setExpandedItalya] = useState(false);
+  const [expandedChampions, setExpandedChampions] = useState(false);
 
   const handlePress = (item: any) => {
     if (item.label === 'Premier Ligi') {
@@ -58,7 +74,11 @@ export default function DrawerMenu({ onClose }: { onClose?: () => void }) {
     } else if (item.label === 'Türkiye Ligi') {
       setExpandedTurkiye((prev) => !prev);
     }
-    else {
+    else if (item.label === 'İtalya Ligi') {
+      setExpandedItalya((prev) => !prev);
+    } else if (item.label === 'Şampiyonlar Ligi') {
+      setExpandedChampions((prev) => !prev);
+    } else {
       router.replace(item.route as any);
       if (onClose) onClose();
     }
@@ -97,6 +117,12 @@ export default function DrawerMenu({ onClose }: { onClose?: () => void }) {
                 )}
                 {item.label === 'Türkiye Ligi' && (
                   <Text style={{ marginRight: 6 }}>{expandedTurkiye ? '▼' : '▶'}</Text>
+                )}
+                {item.label === 'İtalya Ligi' && (
+                  <Text style={{ marginRight: 6 }}>{expandedItalya ? '▼' : '▶'}</Text>
+                )}
+                {item.label === 'Şampiyonlar Ligi' && (
+                  <Text style={{ marginRight: 6 }}>{expandedChampions ? '▼' : '▶'}</Text>
                 )}
                 <View style={styles.menuIcon}>{getDrawerIcon(item.label)}</View>
               </View>
@@ -158,6 +184,34 @@ export default function DrawerMenu({ onClose }: { onClose?: () => void }) {
               ))}
             </View>
           )}
+          {item.children && item.label === 'İtalya Ligi' && expandedItalya && (
+            <View style={styles.subMenuContainer}>
+              {item.children.map((sub) => (
+                <TouchableOpacity
+                  key={typeof sub.route === 'string' ? sub.route : sub.label}
+                  style={styles.subMenuItem}
+                  onPress={() => handlePress(sub)}
+                  activeOpacity={0.7}
+                >
+                  <Text style={styles.subMenuText}>{sub.label}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
+        {item.children && item.label === 'Şampiyonlar Ligi' && expandedChampions && (
+          <View style={styles.subMenuContainer}>
+            {item.children.map((sub) => (
+              <TouchableOpacity
+                key={typeof sub.route === 'string' ? sub.route : sub.label}
+                style={styles.subMenuItem}
+                onPress={() => handlePress(sub)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.subMenuText}>{sub.label}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
         </View>
       ))}
     </LinearGradient>

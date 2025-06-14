@@ -17,6 +17,8 @@ export function getDrawerIcon(label: string, color: string = '#232946', size: nu
       return <Ionicons name="grid-outline" size={size} color={color} />;
     case 'Oyuncu Profili':
       return <Ionicons name="person" size={size} color={color} />;
+    case 'Şampiyonlar Ligi':
+      return <Ionicons name="trophy-outline" size={size} color={color} />;
     default:
       return <Ionicons name="ellipse" size={size} color={color} />;
   }

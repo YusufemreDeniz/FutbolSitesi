@@ -4,18 +4,18 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function TeamDetailsScreen() {
-  const { teamId } = useLocalSearchParams();
+  const params = useLocalSearchParams();
   const router = useRouter();
   const [team, setTeam] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!teamId) return;
+    if (!params.teamId) return;
     const fetchTeam = async () => {
       try {
         const response = await fetch(
-          `https://api-football-v1.p.rapidapi.com/v3/teams?id=${teamId}`,
+          `https://api-football-v1.p.rapidapi.com/v3/teams?id=${params.teamId}`,
           {
             method: 'GET',
             headers: {
@@ -33,7 +33,7 @@ export default function TeamDetailsScreen() {
       }
     };
     fetchTeam();
-  }, [teamId]);
+  }, [params.teamId]);
 
   if (loading) return <ActivityIndicator size="large" color="#ffd700" style={{ flex: 1, marginTop: 40 }} />;
   if (error) return <Text style={{ color: 'red', textAlign: 'center', marginTop: 40 }}>{error}</Text>;
@@ -105,7 +105,7 @@ export default function TeamDetailsScreen() {
           <TouchableOpacity
             activeOpacity={0.85}
             style={[styles.modernButton, { borderColor: teamColor }]}
-            onPress={() => router.push({ pathname: '../../(tabs)/ItalyaLig/team-squad', params: { teamId: teamInfo.id, season: 2024 } })}
+            onPress={() => router.push({ pathname: '/(tabs)/ItalyaLig/team-squad', params: { teamId: teamInfo.id } })}
           >
             <LinearGradient
               colors={[teamColor, 'rgba(255,255,255,0.7)']}
@@ -118,7 +118,7 @@ export default function TeamDetailsScreen() {
           <TouchableOpacity
             activeOpacity={0.85}
             style={[styles.modernButton, { borderColor: teamColor }]}
-            onPress={() => router.push({ pathname: '../../(tabs)/ItalyaLig/team-fixtures', params: { teamId: teamInfo.id } })}
+            onPress={() => router.push({ pathname: '/(tabs)/ItalyaLig/team-fixtures', params: { teamId: teamInfo.id, leagueId: params?.leagueId } })}
           >
             <LinearGradient
               colors={[teamColor, 'rgba(255,255,255,0.7)']}

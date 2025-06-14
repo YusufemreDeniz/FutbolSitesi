@@ -73,7 +73,7 @@ export default function TurkiyeLeagueScreen() {
             {standings.map((team, idx) => (
               <TouchableOpacity
                 key={team.team.id}
-                onPress={() => router.push({ pathname: '/(tabs)/ItalyaLig/italy-league/team-details' as const, params: { teamId: team.team.id } })}
+                onPress={() => router.push({ pathname: '/(tabs)/ItalyaLig/team-details' as const, params: { teamId: team.team.id } })}
                 activeOpacity={0.8}
                 style={[
                   styles.tableRow,
